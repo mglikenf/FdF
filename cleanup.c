@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void ft_free_array(void **array)
+void ft_free_array(char **array)
 {
 	int i;
 

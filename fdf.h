@@ -97,7 +97,7 @@ void		ft_clear_map(t_map *map);
 void		ft_exit_mlx(t_fdf *fdf);
 void		purge_gnl(int fd);
 int			ft_close_window(t_fdf *fdf);
-void		ft_free_array(void **array);
+void		ft_free_array(char **array);
 void		ft_draw_iso(t_fdf *fdf);
 void		ft_draw_segment(t_fdf* fdf, t_point *p1, t_point* p2);
 void		ft_calculate_increment(t_line *line);
