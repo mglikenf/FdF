@@ -31,7 +31,7 @@ SRCS =	fdf.c \
 		parse.c \
 		project.c \
 		draw.c \
-		purge_gnl.c \
+		cleanup.c
 
 OBJDIR = obj
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
@@ -39,31 +39,30 @@ OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 all: $(NAME)
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBDIR)
+	@$(MAKE) --no-print-directory -C $(LIBDIR)
 
 $(MLXLIB):
-	@$(MAKE) -C $(MLXDIR)
-	@echo "$(GREEN)[minilibx]	built$(RESET)"
+	@$(MAKE) --no-print-directory -C $(MLXDIR)
+	@echo "$(GREEN)[minilibx] built$(RESET)"
 
 $(NAME): $(OBJS) $(LIBFT) $(MLXLIB)
 	@$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) $(MATHFLAG) -L$(LIBDIR) -l:libft.a -o $(NAME)
-	@echo "$(GREEN)[fdf]		compiled successfully$(RESET)"
+	@echo "$(GREEN)[fdf] compiled successfully$(RESET)"
 
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -Iminilibx-linux -I$(LIBDIR) -I$(GNL_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -Iminilibx-linux -I$(LIBDIR) -I$(LIBDIR)/get_next_line -c $< -o $@
 
 clean:
 	@rm -f $(OBJS)
 	@rm -rf $(OBJDIR)
-	@$(MAKE) -C $(LIBDIR) clean
-	@echo "$(YELLOW)[clean]		objects removed$(RESET)"
+	@$(MAKE) --no-print-directory -C $(LIBDIR) clean
+	@echo "$(YELLOW)[clean] objects removed$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) -C $(LIBDIR) fclean
-	@$(MAKE) -C $(MLXLIB) clean
-	@echo "$(YELLOW)[fclean]	binaries removed$(RESET)"
+	@$(MAKE) --no-print-directory -C $(LIBDIR) fclean
+	@echo "$(YELLOW)[fclean] binaries removed$(RESET)"
 
 re: fclean all
 

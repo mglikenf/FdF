@@ -61,18 +61,18 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@echo "$(GREEN)[libft]		built$(RESET)"
+	@echo "$(GREEN)[libft] built$(RESET)"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(GNLDIR) -c $< -o $@
 
 clean:
 	@rm -f $(OBJS)
-	@echo "$(YELLOW)[libft]     objects removed$(RESET)"
+	@echo "$(YELLOW)[libft] objects removed$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(YELLOW)[libft]     cleaned$(RESET)"
+	@echo "$(YELLOW)[libft] cleaned$(RESET)"
 
 re: fclean all
 
@@ -80,4 +80,4 @@ so:
 	@$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) -c
 	@$(CC) -nostartfiles -shared -o libft.so $(OBJS)
 
-.PHONY all clean fclean re so
+.PHONY: all clean fclean re so
