@@ -20,7 +20,7 @@ _This project has been created by [mglikenf](https://github.com/mglikenf) as par
 Clone the repository with its submodule:
 
 ```bash
-git clone https://github.com/<your-username>/fdf.git
+git clone https://github.com/mglikenf/fdf.git
 cd fdf
 git submodule update --init
 ```
